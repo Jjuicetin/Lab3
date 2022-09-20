@@ -15,6 +15,8 @@ public class AgeCalculatorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        getServletContext().getRequestDispatcher("/WEB-INF/AgeCalculator.jsp")
+                .forward(request,response);
     }
 
     
@@ -28,6 +30,6 @@ public class AgeCalculatorServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }/
+    }
 
 }
