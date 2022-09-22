@@ -20,14 +20,19 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+           getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
+                .forward(request,response); //bring the page to this jsp ^
     }
 
   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       
+        
+        
+        
+        
     }
 
     

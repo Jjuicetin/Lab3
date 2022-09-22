@@ -18,7 +18,7 @@
             <br>
              <input type="submit" value="Age Next Birthday">
                <p>${message} ${intAge}</p>
-               <a href="arithmeticcalculator.jsp">Arithmetic Calculator</a>
+               <a href="ACal">Arithmetic Calculator</a> <!-- goto web xml and change url -->
             
         </form>
     </body>
