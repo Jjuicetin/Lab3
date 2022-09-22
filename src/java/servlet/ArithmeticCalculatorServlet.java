@@ -33,22 +33,64 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         String second = request.getParameter("second"); //get attribute slaps the variables to the jsp page. 
         String message = "Result: ---";
         request.setAttribute("message", message);
+        request.setAttribute("first", first);
+        request.setAttribute("second", second);
         String buttonChoice = request.getParameter("button");
-         getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp") //returns user to the main page
-                .forward(request,response);
+        int firstNumber = Integer.parseInt(request.getParameter("first"));
+       int secondNumber = Integer.parseInt(request.getParameter("second"));
+       int result = 0;
         
         //validation
         if(first == null || first.equals("") || second == null || second.equals("")){
-              request.setAttribute("first", first);
-              request.setAttribute("second", second);
+             
               message = "Result: Invalid";
               request.setAttribute("message:",message);
                 getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp") //returns user to the main page
                 .forward(request,response);
-                
+                return;
         }
         //button selection
         
+     
+       
+       if("+".equalsIgnoreCase(buttonChoice) == true){
+           message = "Result: ";
+           result = firstNumber + secondNumber;
+           
+           request.setAttribute("message", message);
+           request.setAttribute("result", result);
+           getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp") //returns user to the main page
+                .forward(request,response);
+           return;
+           
+       }
+       else if ("-".equalsIgnoreCase(buttonChoice) == true){
+            message = "Result: ";
+            result = firstNumber - secondNumber;
+            request.setAttribute("message", message);
+            request.setAttribute("result", result);
+            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp") //returns user to the main page
+                .forward(request,response);
+           return;
+       }
+        else if ("*".equalsIgnoreCase(buttonChoice) == true){
+           message = "Result: ";
+            result = firstNumber * secondNumber;
+            request.setAttribute("message", message);
+            request.setAttribute("result", result);
+            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp") //returns user to the main page
+                .forward(request,response);
+           return;
+       }
+        else if ("%".equalsIgnoreCase(buttonChoice) == true){
+           message = "Result: ";
+            result = firstNumber / secondNumber;
+            request.setAttribute("message", message);
+            request.setAttribute("result", result);
+            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp") //returns user to the main page
+                .forward(request,response);
+           return;
+       }
        
        
     }
