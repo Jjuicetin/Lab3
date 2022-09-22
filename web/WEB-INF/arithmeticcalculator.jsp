@@ -15,9 +15,18 @@
     <body>
         <h1>Arithmetic Calculator</h1>
         
-          <form method="post" action="age"> <!-- different action url? NO. welcome age is fine. -->
-              First: <input type="text" name="first" value="${first}"><br>
-              Second: <input type="text" name="second" value="${second}"<br><br>
+          <form method="post" action="arithmetic"> <!-- need different action, use the url.  -->
+              First: <input type="text" name="first" value="${first}">
+              <br>
+              Second: <input type="text" name="second" value="${second}">
+              <br><br>
+              <input type="submit" value="+" name="button">
+              <input type="submit" value="-" name="button">
+              <input type="submit" value="*" name="button">
+              <input type="submit" value="%" name="button">
+              <br>
+              <p>${message} ${result}</p>
+              <br>
               <a href="age">Age Calculator</a>
               
         
