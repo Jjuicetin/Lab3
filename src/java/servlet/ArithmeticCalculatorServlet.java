@@ -9,14 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ArithmeticCalculatorServlet extends HttpServlet {
-
-    
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-       
-    }
-
-   
+ 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -24,35 +17,40 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
                 .forward(request,response); //bring the page to this jsp ^
     }
 
-  
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         String first = request.getParameter("first"); //initialize variable from jsp attributes.
         String second = request.getParameter("second"); //get attribute slaps the variables to the jsp page. 
-        String message = "Result: ---";
+        String message = "---";
+        
         request.setAttribute("message", message);
-        request.setAttribute("first", first);
-        request.setAttribute("second", second);
+        
+        
+        if(first == null || first.equals("") || second == null || second.equals("") 
+                || first.matches("[a-zA-Z]+") || second.matches("[a-zA-Z]+")){
+             
+              message = "Result: Invalid";
+              request.setAttribute("message:", message);
+                getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp") //returns user to the main page
+                .forward(request,response);
+                return;
+        }
         String buttonChoice = request.getParameter("button");
         int firstNumber = Integer.parseInt(request.getParameter("first"));
        int secondNumber = Integer.parseInt(request.getParameter("second"));
        int result = 0;
         
-        //validation
-        if(first == null || first.equals("") || second == null || second.equals("")){
-             
-              message = "Result: Invalid";
-              request.setAttribute("message:",message);
-                getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp") //returns user to the main page
-                .forward(request,response);
-                return;
-        }
+      
         //button selection
-        
-     
-       
        if("+".equalsIgnoreCase(buttonChoice) == true){
            message = "Result: ";
            result = firstNumber + secondNumber;
